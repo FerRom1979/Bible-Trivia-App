@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRouter = ({ children }: any) => {
   const loading = false;
-  const user = true;
+  const user = false;
   if (loading) return <h1>Loading....</h1>;
 
   if (!user) return <Navigate to={"/login"} />;

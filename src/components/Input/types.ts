@@ -9,6 +9,7 @@ export interface IInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => typeof event;
   isError?: boolean;
   disabled?: boolean;
+  className?: string;
 }
 
 export type InputStyledProps = {

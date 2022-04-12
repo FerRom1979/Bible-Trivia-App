@@ -9,12 +9,20 @@ const InputField = ({
   placeholder = "",
   isError = false,
   disabled = false,
+  className = "",
+
   ...rest
 }: IInputProps) => {
   return (
     <InputStyled flexDirection={flexDirection} isError={isError} data-testid="input">
       <label htmlFor={name}>{label}</label>
-      <input id={name} placeholder={placeholder} {...rest} disabled={disabled} />
+      <input
+        id={name}
+        placeholder={placeholder}
+        {...rest}
+        disabled={disabled}
+        className={className}
+      />
     </InputStyled>
   );
 };

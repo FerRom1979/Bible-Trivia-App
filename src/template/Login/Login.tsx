@@ -13,10 +13,16 @@ const Login = () => {
           flexDirection="column"
           label="UserName"
           name="user-name"
-          disabled={true}
+          className="login"
         />
-        <Input type="password" flexDirection="column" label="Password" name="password" />
-        <Button text="Login" />
+        <Input
+          type="password"
+          flexDirection="column"
+          label="Password"
+          name="password"
+          className="login"
+        />
+        <Button text="Login" className="button-login" />
       </form>
     </StyledLoginComponent>
   );

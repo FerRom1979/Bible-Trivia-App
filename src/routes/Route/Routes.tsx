@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../../template/Home";
 import Login from "../../template/Login/Login";
 import PrivateRouter from "../PrivateRouter/PrivateRouter.routes";
+import Register from "../../template/Register/Register";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         />
 
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

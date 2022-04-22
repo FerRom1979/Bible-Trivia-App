@@ -4,7 +4,7 @@ import Button from "./index";
 
 describe("initial input field state", () => {
   test("input renders the correct label field", () => {
-    render(<Button text="BUTTON" />);
+    render(<Button text="BUTTON" type="button" />);
     const inputField = screen.getByTestId("button");
     expect(inputField.textContent).toBe("BUTTON");
   });

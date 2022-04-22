@@ -10,9 +10,11 @@ export interface IInputProps {
   isError?: boolean;
   disabled?: boolean;
   className?: string;
+  required?: boolean;
 }
 
 export type InputStyledProps = {
   flexDirection?: string;
   isError?: boolean;
+  disabled?: boolean;
 };

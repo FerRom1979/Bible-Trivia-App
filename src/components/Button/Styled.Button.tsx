@@ -20,5 +20,18 @@ export const ButtonStyled = styled.div`
       margin-top: 43px;
       color: #ffffff;
     }
+    .text {
+      background-color: transparent;
+      color: #ffffff;
+      border: none;
+      margin: 20px 0;
+    }
+    button {
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `;

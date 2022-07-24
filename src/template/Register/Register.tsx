@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Register = () => {
-  return <div>Register</div>;
-};
+import Login from "../Login";
+import Signup from "../Signup";
+import { StyledRegister } from "./Styled.Register";
+
+function Register() {
+  const [showLogin, setShowLogin] = useState<boolean>(false);
+  return (
+    <StyledRegister>
+      <div className="hero-image" />
+      <div>
+        {!showLogin ? (
+          <Login setShowLogin={setShowLogin} />
+        ) : (
+          <Signup setShowLogin={setShowLogin} />
+        )}
+      </div>
+    </StyledRegister>
+  );
+}
 
 export default Register;

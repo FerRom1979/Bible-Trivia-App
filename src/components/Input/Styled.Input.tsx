@@ -21,7 +21,7 @@ export const InputStyled = styled.div<InputStyledProps>`
       color: #fff;
       outline: #6066ff;
       border-radius: 20px;
-      font-size: 24px;
+      font-size: 16px;
       padding: 10px 20px;
     }
     label {

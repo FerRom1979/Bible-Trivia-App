@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import breakpoints from "../../constant/breackpoint";
 
-export const StyledLoginComponent = styled.div`
+export const StyledRegister = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

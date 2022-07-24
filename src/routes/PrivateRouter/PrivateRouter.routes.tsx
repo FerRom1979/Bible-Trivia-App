@@ -6,7 +6,7 @@ const PrivateRouter = ({ children }: any) => {
   const user = false;
   if (loading) return <h1>Loading....</h1>;
 
-  if (!user) return <Navigate to={"/login"} />;
+  if (!user) return <Navigate to={"/register"} />;
 
   return <>{children}</>;
 };

@@ -3,6 +3,4 @@ export const initialValuesRegister = {
   password: "",
   confirmPassword: "",
   name: "",
-  lastName: "",
-  age: undefined,
 };

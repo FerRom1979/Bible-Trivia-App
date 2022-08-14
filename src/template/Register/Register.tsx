@@ -8,7 +8,6 @@ function Register() {
   const [showLogin, setShowLogin] = useState<boolean>(false);
   return (
     <StyledRegister>
-      <div className="hero-image" />
       <div>
         {!showLogin ? (
           <Login setShowLogin={setShowLogin} />

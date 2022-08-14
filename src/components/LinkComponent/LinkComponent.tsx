@@ -1,16 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { StyledLinkComponent } from "./Styled.LinkComponent";
+import { ILinkProps } from "./types";
 
-interface ILinkProps {
-  routed: string;
-  children?: React.ReactNode;
-  text?: string;
-}
-
-function LinkComponent({ routed, children = null, text = "" }: ILinkProps) {
+function LinkComponent({ routed, children = null, text = "", color = "#fff" }: ILinkProps) {
   return (
-    <StyledLinkComponent>
+    <StyledLinkComponent color={color}>
       <Link to={routed} className="link">
         {text} {children}
       </Link>

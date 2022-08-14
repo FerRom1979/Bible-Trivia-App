@@ -4,6 +4,7 @@ import InputField from "./index";
 
 export default {
   title: "Input",
+
   argTypes: {
     label: {
       defaultValue: "Name",

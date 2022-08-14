@@ -4,14 +4,14 @@ import breakpoints from "../../constant/breackpoint";
 export const StyledLoginComponent = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  width: 370px;
+
   background-color: #000;
-  min-height: 100vh;
+  border-radius: 10px;
 
   && {
     form {
-      width: 100%;
+      width: 90%;
     }
     h2 {
       text-align: center;
@@ -23,6 +23,7 @@ export const StyledLoginComponent = styled.div`
       color: #fff;
     }
     @media (min-width: ${breakpoints.md}px) {
+      width: 400px;
       form {
         width: 80%;
       }

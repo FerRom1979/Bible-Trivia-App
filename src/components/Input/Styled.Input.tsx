@@ -17,8 +17,8 @@ export const InputStyled = styled.div<InputStyledProps>`
     }
     .login {
       border: 2px solid ${({ isError }) => (isError ? "red" : "#6066ff")};
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       outline: #6066ff;
       border-radius: 20px;
       font-size: 16px;

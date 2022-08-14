@@ -8,15 +8,14 @@ import { validationSchema } from "./validationSchema";
 import { ISignup } from "./types";
 import { isEmpty } from "../../utils/isEmpty";
 import Toast from "../../components/Toast";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 const Signup = ({ setShowLogin }: ISignup) => {
   const [msg, setMsg] = useState<string>("");
   const onSubmit = async (values: any, { resetForm }: any) => {
-    const { name, lastName, age, email, password } = await values;
+    const { name, email, password } = await values;
     const user = {
       name,
-      lastName,
-      age,
       email,
       password,
     };
@@ -59,24 +58,6 @@ const Signup = ({ setShowLogin }: ISignup) => {
                 isError={!!formik.errors.name}
               />
               <Input
-                type="text"
-                flexDirection="column"
-                label="lastName"
-                name="lastName"
-                className="login"
-                placeholder="lastName"
-                isError={!!formik.errors.lastName}
-              />
-              <Input
-                type="number"
-                flexDirection="column"
-                label="Age"
-                name="age"
-                className="login"
-                placeholder="Age"
-                isError={!!formik.errors.age}
-              />
-              <Input
                 type="email"
                 flexDirection="column"
                 label="E-mail"
@@ -97,9 +78,9 @@ const Signup = ({ setShowLogin }: ISignup) => {
               <Input
                 type="password"
                 flexDirection="column"
-                label="confirmPassword"
+                label="Confirm Password"
                 name="confirmPassword"
-                placeholder="ConfirmPassword"
+                placeholder="confirm password"
                 className="login"
                 isError={!!formik.errors.confirmPassword}
               />

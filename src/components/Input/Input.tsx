@@ -1,7 +1,7 @@
 import React from "react";
 import { IInputProps } from "./types";
 import { InputStyled } from "./Styled.Input";
-import { ErrorMessage, Field } from "formik";
+import { Field } from "formik";
 
 const InputField = ({
   label = "",
@@ -14,7 +14,7 @@ const InputField = ({
   required = false,
   ...rest
 }: IInputProps) => {
-  const error = ({ children }: any) => <div className="error">{children}</div>;
+  const Error = ({ children }: any) => <div className="error">{children}</div>;
   return (
     <InputStyled
       flexDirection={flexDirection}
@@ -29,9 +29,10 @@ const InputField = ({
         disabled={disabled}
         className={className}
         name={name}
-        {...rest}
+        {...rest} //
       />
-      <ErrorMessage name={name} component={error} />
+
+      <Error name={name} component={Error} />
     </InputStyled>
   );
 };

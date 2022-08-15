@@ -8,10 +8,11 @@ import { validationSchema } from "./validationSchema";
 import { ISignup } from "./types";
 import { isEmpty } from "../../utils/isEmpty";
 import Toast from "../../components/Toast";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCaptCha from "../../components/Recaptcha";
 
 const Signup = ({ setShowLogin }: ISignup) => {
   const [msg, setMsg] = useState<string>("");
+  const [captcha, setCaptcha] = useState<boolean>(false);
   const onSubmit = async (values: any, { resetForm }: any) => {
     const { name, email, password } = await values;
     const user = {
@@ -84,11 +85,18 @@ const Signup = ({ setShowLogin }: ISignup) => {
                 className="login"
                 isError={!!formik.errors.confirmPassword}
               />
+              {!isEmpty(formik.values) && formik.isValid && (
+                <div className="reCaptcha">
+                  <ReCaptCha setCaptcha={setCaptcha} />
+                </div>
+              )}
               <Button
                 text="Sign Up"
                 type="submit"
                 className="button-login"
-                disabled={!formik.isValid || formik.isSubmitting || isEmpty(formik.values)}
+                disabled={
+                  !formik.isValid || formik.isSubmitting || isEmpty(formik.values) || !captcha
+                }
               />
               <Button
                 text="Do you already have an account?"

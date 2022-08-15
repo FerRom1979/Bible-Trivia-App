@@ -2,6 +2,7 @@ import { Formik, Form } from "formik";
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import ReCaptCha from "../../components/Recaptcha";
 import Toast from "../../components/Toast";
 import { isEmpty } from "../../utils/isEmpty";
 import { initialValuesLogin } from "./initialValues";
@@ -10,6 +11,7 @@ import { ILogin } from "./types";
 import { validationSchema } from "./validationSchema";
 
 const Login = ({ setShowLogin }: ILogin) => {
+  const [captcha, setCaptcha] = useState<boolean>(false);
   const [msg, setMsg] = useState<string>("");
   const onSubmit = async (values: any, { resetForm }: any) => {
     const { email, password } = await values;
@@ -68,11 +70,18 @@ const Login = ({ setShowLogin }: ILogin) => {
                 className="login"
                 isError={!!formik.errors.password}
               />
+              {!isEmpty(formik.values) && formik.isValid && (
+                <div className="reCaptcha">
+                  <ReCaptCha setCaptcha={setCaptcha} />
+                </div>
+              )}
               <Button
                 text="Sign In"
                 type="submit"
                 className="button-login"
-                disabled={!formik.isValid || formik.isSubmitting || isEmpty(formik.values)}
+                disabled={
+                  !formik.isValid || formik.isSubmitting || isEmpty(formik.values) || !captcha
+                }
               />
               <Button
                 text="You do not have an account?"

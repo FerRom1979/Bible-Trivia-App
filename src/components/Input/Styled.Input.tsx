@@ -34,5 +34,13 @@ export const InputStyled = styled.div<InputStyledProps>`
       margin-bottom: 10px;
       text-align: center;
     }
+    .wrapper-password {
+      position: relative;
+    }
+    .icon-password {
+      position: absolute;
+      bottom: 30px;
+      left: 85%;
+    }
   }
 `;

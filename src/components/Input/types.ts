@@ -3,7 +3,7 @@ import React from "react";
 export interface IInputProps {
   label?: string;
   name?: string;
-  type?: string;
+  type?: "text" | "email" | "password" | "number";
   flexDirection?: string;
   placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => typeof event;

@@ -1,8 +1,8 @@
 import { Formik, Form } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import ReCaptCha from "../../components/Recaptcha";
+import ReCaptCha from "../../components/Recaptcha/Recaptcha";
 import Toast from "../../components/Toast";
 import { isEmpty } from "../../utils/isEmpty";
 import { initialValuesLogin } from "./initialValues";
@@ -36,8 +36,13 @@ const Login = ({ setShowLogin }: ILogin) => {
       resetForm();
     } catch (error) {
       if (error) setMsg("Email or password incorrect");
+      resetForm();
     }
   };
+
+  useEffect(() => {
+    if (msg) setTimeout(() => setMsg(""), 2000);
+  }, [msg]);
 
   return (
     <Formik

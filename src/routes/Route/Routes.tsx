@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../../template/Home";
 import PrivateRouter from "../PrivateRouter/PrivateRouter.routes";
 import Register from "../../template/Register/Register";
+//import Dashboard from "../../template/Dashboard";
 
 const Router = () => {
   return (

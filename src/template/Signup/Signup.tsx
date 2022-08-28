@@ -28,8 +28,14 @@ const Signup = ({ setShowLogin }: ISignup) => {
         },
         body: JSON.stringify(user),
       });
+      if (response.status === 400) {
+        return setMsg(response.statusText);
+      }
+      if (response.status === 500) {
+        return setMsg(response.statusText);
+      }
       const res = await response.json();
-      setMsg(res.error || (res.errors && "Email or password incorrect"));
+
       if (res.status === 200) setShowLogin(false);
       resetForm();
     } catch (error) {

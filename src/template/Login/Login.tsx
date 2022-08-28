@@ -9,10 +9,17 @@ import { initialValuesLogin } from "./initialValues";
 import { StyledLoginComponent } from "./styled.Login";
 import { ILogin } from "./types";
 import { validationSchema } from "./validationSchema";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../features/auth/authSlices";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setShowLogin }: ILogin) => {
+  const navigate = useNavigate();
   const [captcha, setCaptcha] = useState<boolean>(false);
   const [msg, setMsg] = useState<string>("");
+
+  const dispatch = useDispatch();
+
   const onSubmit = async (values: any, { resetForm }: any) => {
     const { email, password } = await values;
     const user = {
@@ -29,11 +36,12 @@ const Login = ({ setShowLogin }: ILogin) => {
         body: JSON.stringify(user),
       });
       const res = await response.json();
-      console.log(res);
+      dispatch(loginUser(res));
 
       setMsg(res.error || (res.errors && "Email or password incorrect"));
 
       resetForm();
+      navigate("/");
     } catch (error) {
       if (error) setMsg("Email or password incorrect");
       resetForm();

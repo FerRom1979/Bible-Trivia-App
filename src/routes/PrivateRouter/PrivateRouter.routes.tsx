@@ -1,12 +1,16 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PrivateRouter = ({ children }: any) => {
+  const auth = useSelector((state: any) => state.auth);
+
+  console.log(auth);
+
   const loading = false;
-  const user = false;
   if (loading) return <h1>Loading....</h1>;
 
-  if (!user) return <Navigate to={"/register"} />;
+  if (!auth.user) return <Navigate to={"/register"} />;
 
   return <>{children}</>;
 };

@@ -34,9 +34,12 @@ export const authSlice = createSlice({
         tokenConfirm,
       };
     },
+    logOutUser: (state) => {
+      state.user = "";
+    },
   },
 });
 
-export const { loginUser } = authSlice.actions;
+export const { loginUser, logOutUser } = authSlice.actions;
 
 export default authSlice.reducer;

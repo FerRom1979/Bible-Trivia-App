@@ -13,10 +13,17 @@ const StyledNavbar = styled.div`
     font-size: 20px;
     line-height: 30px;
     color: #696f79;
+    cursor: pointer;
+    text-decoration: none;
   }
   svg {
     fill: #696f79;
     margin-right: 30px;
+  }
+  .btn-logOut {
+    position: absolute;
+    bottom: 50px;
+    color: #696f79 !important;
   }
 `;
 

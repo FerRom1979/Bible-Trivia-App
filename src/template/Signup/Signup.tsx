@@ -98,7 +98,7 @@ const Signup = ({ setShowLogin }: ISignup) => {
               />
               {!isEmpty(formik.values) && formik.isValid && (
                 <div className="reCaptcha">
-                  <ReCaptCha setCaptcha={setCaptcha} />
+                  <ReCaptCha captcha={setCaptcha} />
                 </div>
               )}
               <Button

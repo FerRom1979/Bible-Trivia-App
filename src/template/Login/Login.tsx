@@ -1,8 +1,8 @@
 import { Formik, Form } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import ReCaptCha from "../../components/Recaptcha/Recaptcha";
+//import ReCaptCha from "../../components/Recaptcha/Recaptcha";
 import Toast from "../../components/Toast";
 import { isEmpty } from "../../utils/isEmpty";
 import { initialValuesLogin } from "./initialValues";
@@ -12,10 +12,12 @@ import { validationSchema } from "./validationSchema";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../features/auth/authSlices";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = ({ setShowLogin }: ILogin) => {
+  const captcha = useRef<ReCAPTCHA>(null);
   const navigate = useNavigate();
-  const [captcha, setCaptcha] = useState<boolean>(false);
+
   const [msg, setMsg] = useState<string>("");
 
   const dispatch = useDispatch();
@@ -39,7 +41,9 @@ const Login = ({ setShowLogin }: ILogin) => {
       dispatch(loginUser(res));
 
       setMsg(res.error || (res.errors && "Email or password incorrect"));
-
+      const token = await captcha.current?.executeAsync();
+      // eslint-disable-next-line no-console
+      console.log({ token });
       resetForm();
       navigate("/");
     } catch (error) {
@@ -83,11 +87,15 @@ const Login = ({ setShowLogin }: ILogin) => {
                 className="login"
                 isError={!!formik.errors.password}
               />
-              {!isEmpty(formik.values) && formik.isValid && (
-                <div className="reCaptcha">
-                  <ReCaptCha setCaptcha={setCaptcha} />
-                </div>
-              )}
+
+              <div className="reCaptcha">
+                <ReCAPTCHA
+                  sitekey={"6LeopA8iAAAAAATtXk7RZTI7SE4jOSfleAIBRbFV"}
+                  size={"invisible"}
+                  ref={captcha}
+                />
+              </div>
+
               <Button
                 text="Sign In"
                 type="submit"

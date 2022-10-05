@@ -1,3 +1,3 @@
 export interface IReCaptchaProps {
-  setCaptcha?: any;
+  captcha?: any;
 }

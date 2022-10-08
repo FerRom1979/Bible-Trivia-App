@@ -6,6 +6,14 @@ import { ReactComponent as Clock } from "../../assets/svg/clock.svg";
 import { ReactComponent as Check } from "../../assets/svg/circle-check-fill.svg";
 import { StyledDashboard } from "./Styled.Dashboard";
 import { IDashboardProps } from "./types";
+import badge1 from "../../assets/images/Badge.png";
+import badge2 from "../../assets/images/Badge-2.png";
+import badge3 from "../../assets/images/Badge-3.png";
+import Button from "../../components/Button";
+import imagen1 from "../../assets/images/Rectangle 274.png";
+import imagen2 from "../../assets/images/Rectangle-275-2.png";
+import imagen3 from "../../assets/images/Rectangle-276.png";
+import imagen4 from "../../assets/images/Rectangle-277.png";
 
 function Dashboard({ progressBar = 40 }: IDashboardProps) {
   const { user } = useSelector((state: any) => state.auth);
@@ -53,17 +61,58 @@ function Dashboard({ progressBar = 40 }: IDashboardProps) {
           </div>
         </div>
       </div>
-      <div className="grid">
-        <div className="achievements">
-          <p>Achievements</p>
-          <div className="wrapper-progress">
-            <div className="container">
-              <div className="progress-bar">70%</div>
+      <div className="section-main">
+        <div className="section-achievements">
+          <div className="section-0">
+            <p className="subtitle">Achievements</p>
+          </div>
+          <div className="section-1">
+            <div className="wrapper-progress">
+              <div className="container">
+                <div className="progress-bar">70%</div>
+              </div>
             </div>
           </div>
+          <div className="section-2">
+            <div className="achievements">
+              <div>
+                <img src={badge1} alt="badge1" />
+                <p>Comeback</p>
+              </div>
+              <div className="achievements-medium">
+                <img src={badge2} alt="badge2" />
+                <p>Lucky</p>
+              </div>
+              <div>
+                <img src={badge3} alt="badge3" />
+                <p>Winner</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="section-3">
+            <Button type="button" text="View All" className="text" />
+          </div>
         </div>
-        <div>
-          <p>Featured Category</p>
+        <div className="section-category">
+          <div className="section-category-0">
+            <p className="subtitle">Featured Category</p>
+          </div>
+          <div className="section-category-1">
+            <Button type="button" text="View All" className="text" />
+          </div>
+          <div className="section-category-2">
+            <img src={imagen1} alt="imagen1" />
+          </div>
+          <div className="section-category-3">
+            <img src={imagen2} alt="imagen1" />
+          </div>
+          <div className="section-category-4">
+            <img src={imagen3} alt="imagen1" />
+          </div>
+          <div className="section-category-5">
+            <img src={imagen4} alt="imagen1" />
+          </div>
         </div>
       </div>
     </StyledDashboard>

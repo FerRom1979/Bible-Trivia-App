@@ -13,7 +13,8 @@ const Button = ({
   return (
     <ButtonStyled data-testid="button">
       <button className={className} type={type} onClick={onClick} disabled={disabled}>
-        {children} {text}
+        {children}
+        {text}
       </button>
     </ButtonStyled>
   );

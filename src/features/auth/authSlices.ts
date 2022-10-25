@@ -15,6 +15,7 @@ export interface IAuthUser {
 const initialState: any = {
   user: "",
 };
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -35,6 +36,7 @@ export const authSlice = createSlice({
       };
     },
     logOutUser: (state) => {
+      localStorage.removeItem("token");
       state.user = "";
     },
   },

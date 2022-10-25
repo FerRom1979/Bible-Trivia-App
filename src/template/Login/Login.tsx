@@ -41,9 +41,14 @@ const Login = ({ setShowLogin }: ILogin) => {
       dispatch(loginUser(res));
 
       setMsg(res.error || (res.errors && "Email or password incorrect"));
-      const token = await captcha.current?.executeAsync();
-      // eslint-disable-next-line no-console
-      console.log({ token });
+      localStorage.setItem("token", res.token.token);
+
+      /* const token = await captcha.current?.executeAsync();
+
+      if (token) {
+        localStorage.setItem("token", token);
+      } */
+
       resetForm();
       navigate("/");
     } catch (error) {

@@ -1,30 +1,34 @@
 import styled from "styled-components";
+import { IStyledButtonProps } from "./types";
 
-export const ButtonStyled = styled.div`
+export const ButtonStyled = styled.div<IStyledButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
   && {
     .button-login {
-      width: 176px;
-      height: 42px;
-      background: #8b54ff;
-      border: 2px solid #9ca6ff;
+      width: 100%;
+      height: 48px;
+      background: ${({ bg }) => bg || "#0e64d2"};
       box-sizing: border-box;
-      border-radius: 20px;
+      border-radius: 5px;
       font-family: "Inter";
       font-style: normal;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 18px;
-      margin-top: 43px;
-      color: #ffffff;
-    }
-    .text {
-      background-color: transparent;
       color: #ffffff;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .text {
+      background: transparent;
+      color: #000;
+      border: none;
       margin: 20px 0;
+      font-size: 14px;
     }
     button {
       cursor: pointer;

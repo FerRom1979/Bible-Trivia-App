@@ -6,7 +6,7 @@ export const StyledRegister = styled.div`
   justify-content: center;
   width: 370px;
 
-  background-color: #000;
+  background: #ffffff;
   border-radius: 10px;
 
   && {
@@ -20,13 +20,22 @@ export const StyledRegister = styled.div`
       font-weight: 700;
       font-size: 44px;
       line-height: 53px;
-      color: #fff;
+      color: #000;
+    }
+    .icon-facebook {
+      position: relative;
+      right: 100px;
+    }
+    .btn-google {
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      margin: 20px 0;
+      color: rgba(0, 0, 0, 0.6);
+      svg {
+        right: 107px;
+      }
     }
     @media (min-width: ${breakpoints.md}px) {
       width: 400px;
-      form {
-        width: 80%;
-      }
     }
   }
 `;

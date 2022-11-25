@@ -9,9 +9,10 @@ const Button = ({
   onClick,
   disabled = false,
   children = null,
+  bg = null,
 }: IButtonProps) => {
   return (
-    <ButtonStyled data-testid="button">
+    <ButtonStyled data-testid="button" bg={bg}>
       <button className={className} type={type} onClick={onClick} disabled={disabled}>
         {children}
         {text}

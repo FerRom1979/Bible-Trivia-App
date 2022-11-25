@@ -9,6 +9,7 @@ export const InputStyled = styled.div<InputStyledProps>`
   && {
     input {
       width: 100%;
+      height: 48px;
       padding: 10px;
       margin-bottom: 20px;
       border-radius: 10px;
@@ -16,18 +17,19 @@ export const InputStyled = styled.div<InputStyledProps>`
       font-size: ${({ isError }) => (isError ? "48px" : "16px")};
     }
     .login {
-      border: 2px solid ${({ isError }) => (isError ? "red" : "#6066ff")};
+      border: 1px solid ${({ isError }) => (isError ? "red" : "rgba(0, 0, 0, 0.4)")};
       background-color: #fff;
       color: #000;
-      outline: #6066ff;
-      border-radius: 20px;
-      font-size: 16px;
+      outline: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      font-size: 12px;
       padding: 10px 20px;
+      font-weight: 400;
     }
     label {
-      margin: 0 0 10px 10px;
+      margin: 0 0 5px 10px;
       opacity: ${({ disabled }) => (disabled ? "0.5" : "")};
-      color: #fff;
+      color: #000;
     }
     .error {
       color: red;
@@ -39,8 +41,9 @@ export const InputStyled = styled.div<InputStyledProps>`
     }
     .icon-password {
       position: absolute;
-      bottom: 30px;
+      bottom: 33px;
       left: 85%;
+      fill: rgba(0, 0, 0, 0.4);
     }
   }
 `;

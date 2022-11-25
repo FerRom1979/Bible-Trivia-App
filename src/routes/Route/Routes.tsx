@@ -4,6 +4,7 @@ import Home from "../../template/Home";
 import PrivateRouter from "../PrivateRouter/PrivateRouter.routes";
 import Register from "../../template/Register/Register";
 //import Dashboard from "../../template/Dashboard";
+import Quiz from "../../template/Quiz/quiz";
 
 const Router = () => {
   return (
@@ -14,6 +15,14 @@ const Router = () => {
           element={
             <PrivateRouter>
               <Home />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <PrivateRouter>
+              <Quiz />
             </PrivateRouter>
           }
         />

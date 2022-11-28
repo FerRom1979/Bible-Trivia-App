@@ -13,6 +13,10 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../features/auth/authSlices";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import LinkComponent from "../../components/LinkComponent";
+import DividingComponent from "../../components/DividingCompopnent";
+import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
+import { ReactComponent as Google } from "../../assets/svg/google.svg";
 
 const Login = ({ setShowLogin }: ILogin) => {
   const captcha = useRef<ReCAPTCHA>(null);
@@ -73,7 +77,9 @@ const Login = ({ setShowLogin }: ILogin) => {
           <StyledLoginComponent>
             {msg && <Toast message={msg} />}
             <Form>
-              <h2>Login</h2>
+              <h2>
+                Login <br /> Welcome back!
+              </h2>
               <Input
                 type="email"
                 flexDirection="column"
@@ -93,14 +99,12 @@ const Login = ({ setShowLogin }: ILogin) => {
                 isError={!!formik.errors.password}
               />
 
-              <div className="reCaptcha">
-                <ReCAPTCHA
-                  sitekey={"6LeopA8iAAAAAATtXk7RZTI7SE4jOSfleAIBRbFV"}
-                  size={"invisible"}
-                  ref={captcha}
-                />
-              </div>
-
+              <LinkComponent
+                routed="####"
+                text="Forgot Password?"
+                color="#2F89FC"
+                className="link"
+              />
               <Button
                 text="Sign In"
                 type="submit"
@@ -110,12 +114,31 @@ const Login = ({ setShowLogin }: ILogin) => {
                 }
               />
               <Button
-                text="You do not have an account?"
+                text="Don’t have an account? Signup"
                 type="button"
                 className="text"
                 onClick={() => setShowLogin(true)}
               />
+              <DividingComponent label="Or" />
+              <Button text="Login with Facebook" type="submit" className="button-login">
+                <Facebook className="icon-facebook" />
+              </Button>
+              <Button
+                text="Login with Google"
+                type="submit"
+                className="button-login btn-google"
+                bg="#fff"
+              >
+                <Google className="icon-facebook" />
+              </Button>
             </Form>
+            <div className="reCaptcha">
+              <ReCAPTCHA
+                sitekey={"6LeopA8iAAAAAATtXk7RZTI7SE4jOSfleAIBRbFV"}
+                size={"invisible"}
+                ref={captcha}
+              />
+            </div>
           </StyledLoginComponent>
         );
       }}

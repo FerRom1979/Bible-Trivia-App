@@ -5,6 +5,7 @@ export interface ILinkProps {
   children?: React.ReactNode;
   text?: string;
   color?: string;
+  className?: string;
 }
 
 export interface ILinkStyled {

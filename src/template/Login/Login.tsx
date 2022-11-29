@@ -7,7 +7,7 @@ import Toast from "../../components/Toast";
 import { isEmpty } from "../../utils/isEmpty";
 import { initialValuesLogin } from "./initialValues";
 import { StyledLoginComponent } from "./styled.Login";
-import { ILogin } from "./types";
+import { ILogin, IMsg } from "./types";
 import { validationSchema } from "./validationSchema";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../features/auth/authSlices";
@@ -22,7 +22,11 @@ const Login = ({ setShowLogin }: ILogin) => {
   const captcha = useRef<ReCAPTCHA>(null);
   const navigate = useNavigate();
 
-  const [msg, setMsg] = useState<string>("");
+  const [msg, setMsg] = useState<IMsg | null>({
+    title: "",
+    message: "",
+    severity: undefined,
+  });
 
   const dispatch = useDispatch();
 
@@ -44,7 +48,11 @@ const Login = ({ setShowLogin }: ILogin) => {
       const res = await response.json();
       dispatch(loginUser(res));
 
-      setMsg(res.error || (res.errors && "Email or password incorrect"));
+      setMsg({
+        title: res.status,
+        severity: "error",
+        message: res.error || (res.errors && "Email or password incorrect"),
+      });
       localStorage.setItem("token", res.token.token);
 
       /* const token = await captcha.current?.executeAsync();
@@ -56,13 +64,14 @@ const Login = ({ setShowLogin }: ILogin) => {
       resetForm();
       navigate("/");
     } catch (error) {
-      if (error) setMsg("Email or password incorrect");
+      if (error)
+        setMsg({ title: "Error", severity: "error", message: "Email or password incorrect" });
       resetForm();
     }
   };
 
   useEffect(() => {
-    if (msg) setTimeout(() => setMsg(""), 2000);
+    if (msg) setTimeout(() => setMsg(null), 4000);
   }, [msg]);
 
   return (
@@ -75,7 +84,14 @@ const Login = ({ setShowLogin }: ILogin) => {
         // console.log("Formik props", formik);
         return (
           <StyledLoginComponent>
-            {msg && <Toast message={msg} />}
+            {msg?.message && (
+              <Toast
+                message={msg?.message}
+                title={msg.title}
+                severity={msg.severity}
+                setMsg={setMsg}
+              />
+            )}
             <Form>
               <h2>
                 Login <br /> Welcome back!

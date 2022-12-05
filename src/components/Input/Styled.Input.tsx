@@ -45,5 +45,9 @@ export const InputStyled = styled.div<InputStyledProps>`
       left: 85%;
       fill: rgba(0, 0, 0, 0.4);
     }
+    .input-label {
+      display: flex;
+      align-items: center;
+    }
   }
 `;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IInputProps } from "./types";
 import { InputStyled } from "./Styled.Input";
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 import { ReactComponent as Visibility } from "../../assets/svg/eye-off.svg";
 import { ReactComponent as VisibilityOf } from "../../assets/svg/eye.svg";
 
@@ -26,7 +26,10 @@ const InputField = ({
       data-testid="input"
       disabled={disabled}
     >
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} className="input-label">
+        {label}
+      </label>
+
       <Field
         id={name}
         placeholder={`${placeholder}${required ? "*" : ""}`}
@@ -48,8 +51,7 @@ const InputField = ({
           )}
         </div>
       )}
-
-      <Error name={name} component={Error} />
+      <ErrorMessage name={name} component={Error} />
     </InputStyled>
   );
 };

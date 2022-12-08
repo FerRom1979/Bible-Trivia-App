@@ -2,7 +2,6 @@ import { Formik, Form } from "formik";
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-//import ReCaptCha from "../../components/Recaptcha/Recaptcha";
 import Toast from "../../components/Toast";
 import { isEmpty } from "../../utils/isEmpty";
 import { initialValuesLogin } from "./initialValues";
@@ -17,6 +16,8 @@ import LinkComponent from "../../components/LinkComponent";
 import DividingComponent from "../../components/DividingCompopnent";
 import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
 import { ReactComponent as Google } from "../../assets/svg/google.svg";
+import { auth } from "../../api/auth";
+import { setItems } from "../../utils/localStorage";
 
 const Login = ({ setShowLogin }: ILogin) => {
   const captcha = useRef<ReCAPTCHA>(null);
@@ -36,36 +37,22 @@ const Login = ({ setShowLogin }: ILogin) => {
       email,
       password,
     };
-
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(user),
-      });
-      const res = await response.json();
-      dispatch(loginUser(res));
+      const response = await auth.UserLogin("auth/login", user);
 
-      setMsg({
-        title: res.status,
-        severity: "error",
-        message: res.error || (res.errors && "Email or password incorrect"),
-      });
-      localStorage.setItem("token", res.token.token);
+      if (response.errors) throw new Error(response.errors[0].msg);
 
-      /* const token = await captcha.current?.executeAsync();
+      dispatch(loginUser(response));
 
-      if (token) {
-        localStorage.setItem("token", token);
-      } */
-
+      setItems("token", response.token.token);
       resetForm();
       navigate("/");
     } catch (error) {
-      if (error)
-        setMsg({ title: "Error", severity: "error", message: "Email or password incorrect" });
+      setMsg({
+        title: "Error",
+        severity: "error",
+        message: `${error}`.replace("Error:", "") || "Email or password incorrect",
+      });
       resetForm();
     }
   };

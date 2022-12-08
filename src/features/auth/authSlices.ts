@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { removeItem } from "../../utils/localStorage";
 
 export interface IAuthUser {
   name: string;
@@ -36,7 +37,7 @@ export const authSlice = createSlice({
       };
     },
     logOutUser: (state) => {
-      localStorage.removeItem("token");
+      removeItem("token");
       state.user = "";
     },
   },

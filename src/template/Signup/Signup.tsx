@@ -12,6 +12,7 @@ import ReCaptCha from "../../components/Recaptcha/Recaptcha";
 import DividingComponent from "../../components/DividingCompopnent";
 import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
 import { ReactComponent as Google } from "../../assets/svg/google.svg";
+import { auth } from "../../api/auth";
 
 const Signup = ({ setShowLogin }: ISignup) => {
   const [msg, setMsg] = useState<string>("");
@@ -25,30 +26,21 @@ const Signup = ({ setShowLogin }: ISignup) => {
       password,
     };
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(user),
-      });
-      if (response.status === 400) {
-        return setMsg(response.statusText);
-      }
-      if (response.status === 500) {
-        return setMsg(response.statusText);
-      }
+      const response = await auth.UserLogin("auth/signup", user);
+      if (response.error) throw new Error(response.error);
+
       const res = await response.json();
 
       if (res.status === 200) setShowLogin(false);
       resetForm();
     } catch (error) {
-      if (error) setMsg("Email or password incorrect");
+      setMsg(`${error}`);
+      resetForm();
     }
   };
 
   useEffect(() => {
-    if (msg) setTimeout(() => setMsg(""), 2000);
+    if (msg) setTimeout(() => setMsg(""), 4000);
   }, [msg]);
 
   return (

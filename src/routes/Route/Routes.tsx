@@ -5,6 +5,7 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter.routes";
 import Register from "../../template/Register/Register";
 //import Dashboard from "../../template/Dashboard";
 import Quiz from "../../template/Quiz/quiz";
+import CardQuestions from "../../components/CardQuestions";
 
 const Router = () => {
   return (
@@ -23,6 +24,14 @@ const Router = () => {
           element={
             <PrivateRouter>
               <Quiz />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/card-questions"
+          element={
+            <PrivateRouter>
+              <CardQuestions />
             </PrivateRouter>
           }
         />

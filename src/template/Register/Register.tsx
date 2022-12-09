@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../features/auth/authSlices";
+import { getItem } from "../../utils/localStorage";
 
 import Login from "../Login";
 import Signup from "../Signup";
@@ -11,16 +12,14 @@ function Register() {
   const [showLogin, setShowLogin] = useState<boolean>(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const token = getItem("token");
   const authT = async () => {
-    console.log(token);
-
     try {
       const response = await fetch(`http://localhost:4000/api/v1/auth/protected`, {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}` || "",
+          Authorization: `Bearer ${getItem("token")}` || "",
         },
       });
       const res = await response.json();

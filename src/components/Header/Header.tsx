@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   const { user } = useSelector((state: any) => state.auth);
-  console.log(user);
 
   return (
     <StyledHeader>

@@ -4,26 +4,32 @@ import Button from "../Button";
 import Countdown from "../CountDown/CountDown";
 import { StyledCardQuestions } from "./Styled.CardQuestions";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { counterAnswersCorrect } from "../../features/questions/questionsSlices";
+import { useNavigate } from "react-router-dom";
 
 const CardQuestions = () => {
+  const navigate = useNavigate();
   const questions = useAppSelector((state) => state.questions.questions);
+  const dispatch = useDispatch();
   const [counter, setCounter] = useState<number>(1);
   const [stop, setStop] = useState<boolean>(false);
-  const [startTime, setStartTime] = useState<number>(2);
-
-  const answers = [
-    questions[counter - 1].responseOne,
-    questions[counter - 1].responseTwo,
-    questions[counter - 1].responseTree,
-    questions[counter - 1].responseCorrect,
-  ];
+  const [isCorrect, setIsCorrect] = useState<string>("");
 
   const getTime = (time: any) => {
     console.log(time);
   };
   useEffect(() => {
-    setStartTime(1);
+    setStop(true);
   }, []);
+
+  const handleAnswer = (answer: string) => {
+    if (answer === questions[counter - 1].responseCorrect) {
+      dispatch(counterAnswersCorrect(questions[counter - 1]._id));
+    }
+    setIsCorrect(answer);
+    setStop(true);
+  };
 
   return (
     <StyledCardQuestions>
@@ -31,9 +37,9 @@ const CardQuestions = () => {
         <div className="counter">
           Questions {counter} of {questions.length}
         </div>
-        <div className="category">{questions[counter - 1].type}</div>
+        <div className="category">{questions[counter - 1].type || " "} </div>
         <div className="time">
-          TIME: <Countdown getTime={getTime} stop={stop} startTime={startTime} />
+          TIME: <Countdown getTime={getTime} stop={stop} startTime={2} />
         </div>
       </div>
       <div>
@@ -42,30 +48,27 @@ const CardQuestions = () => {
       <div className="answers">
         <div className="buttons">
           <div>
-            {answers &&
-              answers
-                .sort(function () {
-                  return Math.random() - 0.5;
-                })
-                .map((answer, index) => (
-                  <Button
-                    type="button"
-                    text={answer}
-                    className="btn-question"
-                    key={index}
-                    onClick={() => setStop(true)}
-                  />
-                ))}
+            {questions[counter - 1].answers.map((answer: string, index: number) => (
+              <Button
+                type="button"
+                text={answer}
+                className={isCorrect === answer ? "btn-question btn-success" : "btn-question"}
+                key={index}
+                onClick={() => handleAnswer(answer)}
+              />
+            ))}
             <Button
               type="button"
               text={counter < 10 ? "Next" : "Finish"}
               className="btn-question"
-              onClick={() =>
+              onClick={() => {
+                if (counter === questions.length) {
+                  return navigate("/card-results");
+                }
                 setCounter((prev) => {
                   return prev + 1;
-                })
-              }
-              disabled={counter === questions.length}
+                });
+              }}
             />
           </div>
         </div>

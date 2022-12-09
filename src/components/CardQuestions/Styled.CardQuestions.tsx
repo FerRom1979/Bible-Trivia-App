@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { StyledCardQuestionsProps } from "./types";
 
-export const StyledCardQuestions = styled.div`
+export const StyledCardQuestions = styled.div<StyledCardQuestionsProps>`
   background: linear-gradient(180deg, #32167c 0%, #1f1147 54.69%);
   width: 100%;
   height: 100vh;
@@ -35,6 +36,7 @@ export const StyledCardQuestions = styled.div`
     text-align: center;
     color: #38e9bb;
   }
+
   .answers {
     width: 50%;
   }
@@ -54,5 +56,11 @@ export const StyledCardQuestions = styled.div`
     text-align: center;
     color: #ffffff;
     border: none;
+  }
+  .btn-error {
+    background: red;
+  }
+  .btn-success {
+    background: green;
   }
 `;

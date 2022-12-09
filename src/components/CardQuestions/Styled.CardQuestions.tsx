@@ -19,7 +19,14 @@ export const StyledCardQuestions = styled.div`
     .category {
       font-size: 36px;
       line-height: 43px;
+      text-transform: capitalize;
     }
+  }
+  .time {
+    display: flex;
+  }
+  .count-down {
+    margin-left: 10px;
   }
   .questions {
     width: 767px;

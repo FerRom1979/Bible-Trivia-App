@@ -6,18 +6,18 @@ export interface INotification {
 }
 
 const initialState: any = {
-  questions: [],
+  notification: [],
 };
 
-export const questionsSlice = createSlice({
-  name: "questions",
+export const notificationsSlice = createSlice({
+  name: "notifications",
   initialState,
   reducers: {
-    getQuestions: (state, action) => {
-      const { questions } = action.payload;
-      state.questions = questions;
+    getNotifications: (state, action) => {
+      const { notifications } = action.payload;
+      state.notifications = notifications;
     },
   },
 });
 
-export const { getQuestions } = questionsSlice.actions;
+export const { getNotifications } = notificationsSlice.actions;

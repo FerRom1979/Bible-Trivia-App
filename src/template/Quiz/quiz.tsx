@@ -5,21 +5,14 @@ import { StyledQuiz } from "./Styled.Quiz";
 import logo from "../../assets/images/logo.png";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { questions } from "../../api/getQuestions";
 
-function Quiz() {
+const Quiz = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const getAllQuestions = async () => {
     try {
-      const response = await (
-        await fetch(`${process.env.REACT_APP_API_URL}/questions?page=1&size=10`, {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}` || "",
-          },
-        })
-      ).json();
+      const response = await questions.GetQuestions();
 
       dispatch(getQuestions(response));
     } catch (error) {
@@ -54,6 +47,6 @@ function Quiz() {
       </div>
     </StyledQuiz>
   );
-}
+};
 
 export default Quiz;

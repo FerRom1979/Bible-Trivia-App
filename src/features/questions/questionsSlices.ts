@@ -16,6 +16,7 @@ export interface IQuestions {
 
 const initialState: any = {
   questions: [],
+  total: [],
 };
 
 export const questionsSlice = createSlice({
@@ -24,11 +25,25 @@ export const questionsSlice = createSlice({
   reducers: {
     getQuestions: (state, action) => {
       const { questions } = action.payload;
+      questions.map((question: any) => {
+        question["answers"] = [
+          question.responseOne,
+          question.responseTwo,
+          question.responseTree,
+          question.responseCorrect,
+        ].sort(function () {
+          return Math.random() - 0.5;
+        });
+      });
+
       state.questions = questions;
+    },
+    counterAnswersCorrect: (state, action) => {
+      state.total = [...state.total, action.payload];
     },
   },
 });
 
-export const { getQuestions } = questionsSlice.actions;
+export const { getQuestions, counterAnswersCorrect } = questionsSlice.actions;
 
 export default questionsSlice.reducer;

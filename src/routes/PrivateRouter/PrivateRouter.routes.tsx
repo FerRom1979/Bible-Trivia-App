@@ -4,9 +4,6 @@ import { useSelector } from "react-redux";
 
 const PrivateRouter = ({ children }: any) => {
   const auth = useSelector((state: any) => state.auth);
-
-  console.log(auth);
-
   const loading = false;
   if (loading) return <h1>Loading....</h1>;
 

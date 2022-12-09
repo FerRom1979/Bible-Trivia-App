@@ -11,3 +11,6 @@ export type QuestionsProps = {
   createdAt: Date;
   updatedAt: Date;
 };
+export type StyledCardQuestionsProps = {
+  isCorrect?: boolean;
+};

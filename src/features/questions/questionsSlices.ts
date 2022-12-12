@@ -17,6 +17,7 @@ export interface IQuestions {
 const initialState: any = {
   questions: [],
   total: [],
+  configQuestions: [],
 };
 
 export const questionsSlice = createSlice({
@@ -35,15 +36,17 @@ export const questionsSlice = createSlice({
           return Math.random() - 0.5;
         });
       });
-
       state.questions = questions;
     },
     counterAnswersCorrect: (state, action) => {
       state.total = [...state.total, action.payload];
     },
+    addConfigQuestions: (state, action) => {
+      state.configQuestions = [{ ...state.configQuestions[0], ...action.payload }];
+    },
   },
 });
 
-export const { getQuestions, counterAnswersCorrect } = questionsSlice.actions;
+export const { getQuestions, counterAnswersCorrect, addConfigQuestions } = questionsSlice.actions;
 
 export default questionsSlice.reducer;

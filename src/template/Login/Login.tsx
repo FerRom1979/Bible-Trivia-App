@@ -39,11 +39,8 @@ const Login = ({ setShowLogin }: ILogin) => {
     };
     try {
       const response = await auth.UserLogin("auth/login", user);
-
       if (response.errors) throw new Error(response.errors[0].msg);
-
       dispatch(loginUser(response));
-
       setItems("token", response.token.token);
       resetForm();
       navigate("/");

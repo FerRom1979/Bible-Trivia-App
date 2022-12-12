@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledTooltip = styled.div`
   position: relative;
-  // display: inline-block;
   .icon :hover .tooltip {
     display: block;
   }

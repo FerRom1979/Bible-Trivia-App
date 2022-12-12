@@ -5,7 +5,6 @@ export const InputStyled = styled.div<InputStyledProps>`
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection || ""};
   width: 100%;
-
   && {
     input {
       width: 100%;

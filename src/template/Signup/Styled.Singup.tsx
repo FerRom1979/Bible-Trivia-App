@@ -5,10 +5,8 @@ export const StyledRegister = styled.div`
   display: flex;
   justify-content: center;
   width: 370px;
-
   background: #ffffff;
   border-radius: 10px;
-
   && {
     form {
       width: 90%;

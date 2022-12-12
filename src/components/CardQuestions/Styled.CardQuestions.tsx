@@ -63,4 +63,9 @@ export const StyledCardQuestions = styled.div<StyledCardQuestionsProps>`
   .btn-success {
     background: green;
   }
+  .btn-next {
+    background: #38e9bb;
+    color: #4d4949;
+    font-weight: 700;
+  }
 `;

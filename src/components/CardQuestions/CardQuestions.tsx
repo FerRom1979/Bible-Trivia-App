@@ -14,7 +14,7 @@ const CardQuestions = () => {
   const dispatch = useDispatch();
   const [counter, setCounter] = useState<number>(1);
   const [stop, setStop] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<string>("");
+  const [isCorrect, setIsCorrect] = useState<string | undefined>(undefined);
 
   const getTime = (time: any) => {
     console.log(time);
@@ -30,6 +30,7 @@ const CardQuestions = () => {
     setIsCorrect(answer);
     setStop(true);
   };
+  console.log({ isCorrect });
 
   return (
     <StyledCardQuestions>
@@ -55,13 +56,15 @@ const CardQuestions = () => {
                 className={isCorrect === answer ? "btn-question btn-success" : "btn-question"}
                 key={index}
                 onClick={() => handleAnswer(answer)}
+                disabled={isCorrect && isCorrect !== answer ? true : false}
               />
             ))}
             <Button
               type="button"
               text={counter < 10 ? "Next" : "Finish"}
-              className="btn-question"
+              className="btn-question btn-next"
               onClick={() => {
+                setIsCorrect(undefined);
                 if (counter === questions.length) {
                   return navigate("/card-results");
                 }

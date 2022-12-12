@@ -4,11 +4,19 @@ import Button from "../Button";
 import { StyledCardResult } from "./Styled.CardResult";
 import { ReactComponent as Success } from "../../assets/svg/success.svg";
 import { ReactComponent as Error } from "../../assets/svg/close-4.svg";
+import { useDispatch } from "react-redux";
+import { addDataPlayer } from "../../features/player/playerSlice";
 
 const CardResult = () => {
   const questions = useAppSelector((state) => state.questions.questions);
   const total = useAppSelector((state) => state.questions.total);
-  console.log(total);
+  const resultQuestions = {
+    totalQuestions: questions.length,
+    totalCorrectAnswers: total.length,
+    difficulty: "",
+    time: "",
+  };
+  const dispatch = useDispatch();
 
   return (
     <StyledCardResult>
@@ -34,7 +42,12 @@ const CardResult = () => {
         <Button className="btn-result" type="button" text="Play Again" />
       </div>
       <div>
-        <Button className="btn-result" type="button" text="End Game" />
+        <Button
+          className="btn-result"
+          type="button"
+          text="End Game"
+          onClick={() => dispatch(addDataPlayer(resultQuestions))}
+        />
       </div>
     </StyledCardResult>
   );

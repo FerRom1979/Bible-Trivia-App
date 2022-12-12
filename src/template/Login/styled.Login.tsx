@@ -5,10 +5,8 @@ export const StyledLoginComponent = styled.div`
   display: flex;
   justify-content: center;
   width: 370px;
-
   background-color: #ffffff;
   border-radius: 10px;
-
   && {
     form {
       width: 90%;

@@ -4,15 +4,19 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const auth = {
   UserLogin: async function (endpoint: string, user: any) {
-    const response = await window.fetch(`${BASE_URL}/${endpoint}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(user),
-    });
+    try {
+      const response = await window.fetch(`${BASE_URL}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(user),
+      });
 
-    return await response.json();
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+    }
   },
   UserProtected: async function (endpoint: string) {
     const response = await window.fetch(`${BASE_URL}/${endpoint}`, {

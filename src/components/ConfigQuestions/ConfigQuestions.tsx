@@ -1,26 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { category, difficulty } from "../../constant/configQuestionsValues";
+import Button from "../Button";
+import { StyledConfigQuestions } from "./Styled.ConfigQuestions";
+import { useDispatch } from "react-redux";
+import { addConfigQuestions } from "../../features/questions/questionsSlices";
+import { useNavigate } from "react-router-dom";
+export interface IStepProps {
+  cardTitle: string;
+  description: string;
+  id: number;
+  title: string;
+  value: string;
+}
+const items = ["difficulty", "category"];
 
 const ConfigQuestions = () => {
+  const [counterSteps, setCounterSteps] = useState<number>(0);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const STEPS = {
+    difficulty: difficulty,
+    category: category,
+  };
+
+  const handleConfigQuestions = (value: string) => {
+    if (counterSteps + 1 === items.length) {
+      dispatch(addConfigQuestions({ [items[counterSteps]]: value }));
+      navigate("/quiz");
+    } else {
+      dispatch(addConfigQuestions({ [items[counterSteps]]: value }));
+      setCounterSteps((prev) => {
+        return prev + 1;
+      });
+    }
+  };
+
   return (
-    <div>
-      <div>
-        <label htmlFor="difficulty">Difficulty</label>
-        <select name="difficulty" title="Difficulty" id="difficulty">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
+    <StyledConfigQuestions>
+      <div className="title">{items[counterSteps]}</div>
+      <div className="wrapper-cards">
+        {STEPS &&
+          (STEPS[items[counterSteps] as keyof {}] as []).map((item: IStepProps) => (
+            <div key={item.id}>
+              <div className="card-content">
+                <div className="description card-title">{item.cardTitle}</div>
+                <div className="description">{item.description}</div>
+                <div>
+                  <Button
+                    type="button"
+                    text="Selected"
+                    className="btn"
+                    onClick={() => handleConfigQuestions(item.value)}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
       </div>
-      <div>
-        <label htmlFor="category">Category</label>
-        <select name="category" title="category" id="category">
-          <option value="characters">Characters</option>
-          <option value="general">General</option>
-          <option value="oldTestament">Old Testament</option>
-          <option value="newTestament">New Testament</option>
-        </select>
-      </div>
-    </div>
+    </StyledConfigQuestions>
   );
 };
 

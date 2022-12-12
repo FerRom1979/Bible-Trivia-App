@@ -17,7 +17,7 @@ function Header() {
           type="button"
           text="Start Quiz"
           className="btn-start"
-          onClick={() => navigate("/quiz")}
+          onClick={() => navigate("/config-questions")}
         />
       </div>
       <div className="user-avatar">

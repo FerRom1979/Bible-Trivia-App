@@ -6,7 +6,7 @@ import Register from "../../template/Register/Register";
 //import Dashboard from "../../template/Dashboard";
 import Quiz from "../../template/Quiz/quiz";
 import CardQuestions from "../../components/CardQuestions";
-import CardResult from "../../components/CardResult/CardResult";
+import CardResult from "../../components/CardResult";
 
 const Router = () => {
   return (

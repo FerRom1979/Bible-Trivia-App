@@ -39,7 +39,7 @@ const Login = ({ setShowLogin }: ILogin) => {
     };
     try {
       const response = await auth.UserLogin("auth/login", user);
-      if (response.errors) throw new Error(response.errors[0].msg);
+      if (response.error) throw new Error(response.error);
       dispatch(loginUser(response));
       setItems("token", response.token.token);
       resetForm();
@@ -98,7 +98,6 @@ const Login = ({ setShowLogin }: ILogin) => {
                 className="login"
                 isError={!!formik.errors.password}
               />
-
               <LinkComponent
                 routed="####"
                 text="Forgot Password?"
@@ -120,14 +119,15 @@ const Login = ({ setShowLogin }: ILogin) => {
                 onClick={() => setShowLogin(true)}
               />
               <DividingComponent label="Or" />
-              <Button text="Login with Facebook" type="submit" className="button-login">
+              <Button text="Login with Facebook" type="button" className="button-login" disabled>
                 <Facebook className="icon-facebook" />
               </Button>
               <Button
                 text="Login with Google"
-                type="submit"
+                type="button"
                 className="button-login btn-google"
                 bg="#fff"
+                disabled
               >
                 <Google className="icon-facebook" />
               </Button>

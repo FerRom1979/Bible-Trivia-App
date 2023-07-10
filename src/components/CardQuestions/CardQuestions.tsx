@@ -30,26 +30,25 @@ const CardQuestions = () => {
     setIsCorrect(answer);
     setStop(true);
   };
-  console.log({ isCorrect });
 
   return (
     <StyledCardQuestions>
       <div className="header">
         <div className="counter">
-          Questions {counter} of {questions.length}
+          Questions {counter} of {questions?.length}
         </div>
-        <div className="category">{questions[counter - 1].type || " "} </div>
+        <div className="category">{questions[counter - 1]?.type || " "} </div>
         <div className="time">
           TIME: <Countdown getTime={getTime} stop={stop} startTime={2} />
         </div>
       </div>
       <div>
-        <p className="questions">{questions[counter - 1].question}</p>
+        <p className="questions">{questions[counter - 1]?.question}</p>
       </div>
       <div className="answers">
         <div className="buttons">
           <div>
-            {questions[counter - 1].answers.map((answer: string, index: number) => (
+            {questions[counter - 1]?.answers.map((answer: string, index: number) => (
               <Button
                 type="button"
                 text={answer}
@@ -65,7 +64,7 @@ const CardQuestions = () => {
               className="btn-question btn-next"
               onClick={() => {
                 setIsCorrect(undefined);
-                if (counter === questions.length) {
+                if (counter === questions?.length) {
                   return navigate("/card-results");
                 }
                 setCounter((prev) => {

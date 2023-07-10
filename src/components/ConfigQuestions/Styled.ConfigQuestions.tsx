@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 export const StyledConfigQuestions = styled.div`
   background: linear-gradient(180deg, #32167c 0%, #1f1147 54.69%);
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
   .wrapper-cards {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
   }
   .title {
     margin-bottom: 30px;
@@ -21,17 +23,17 @@ export const StyledConfigQuestions = styled.div`
     line-height: 48px;
     text-align: center;
     color: #38e9bb;
+    height: 40px;
   }
   .card-title {
     background: #6949fd;
-    padding: 5px;
   }
   .description {
     margin: 20px 0;
     font-family: "Russo One";
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 16px;
     line-height: 39px;
     text-align: center;
     color: #ffffff;
@@ -41,6 +43,7 @@ export const StyledConfigQuestions = styled.div`
     transition: 0.3s;
     background: #1f1147;
     max-width: 350px;
+    margin-bottom: 20px;
     :hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     }
@@ -48,12 +51,12 @@ export const StyledConfigQuestions = styled.div`
   }
   .btn {
     min-width: 50%;
-    height: 43px;
-    margin: 20px 0px;
+    height: 33px;
+    margin: 5px 0px;
     background: #6949fd;
     border-radius: 10px;
     border: none;
     color: #ffffff;
-    font-size: 22px;
+    font-size: 16px;
   }
 `;

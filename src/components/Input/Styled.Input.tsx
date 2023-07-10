@@ -21,7 +21,7 @@ export const InputStyled = styled.div<InputStyledProps>`
       color: #000;
       outline: rgba(0, 0, 0, 0.4);
       border-radius: 10px;
-      font-size: 12px;
+      font-size: 16px;
       padding: 10px 20px;
       font-weight: 400;
     }

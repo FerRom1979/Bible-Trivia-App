@@ -8,6 +8,7 @@ import Quiz from "../../template/Quiz/quiz";
 import CardQuestions from "../../components/CardQuestions";
 import CardResult from "../../components/CardResult";
 import ConfigQuestions from "../../components/ConfigQuestions";
+import DashboardAdmin from "../../template/DashboardAdmin";
 
 const Router = () => {
   return (
@@ -50,6 +51,14 @@ const Router = () => {
           element={
             <PrivateRouter>
               <CardResult />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/dashboard-admin"
+          element={
+            <PrivateRouter>
+              <DashboardAdmin />
             </PrivateRouter>
           }
         />

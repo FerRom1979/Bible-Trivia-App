@@ -15,7 +15,7 @@ export const ButtonStyled = styled.div<IStyledButtonProps>`
       font-family: "Inter";
       font-style: normal;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 18px;
       color: #ffffff;
       border: none;
@@ -28,7 +28,7 @@ export const ButtonStyled = styled.div<IStyledButtonProps>`
       color: #000;
       border: none;
       margin: 20px 0;
-      font-size: 14px;
+      font-size: 16px;
     }
     button {
       cursor: pointer;

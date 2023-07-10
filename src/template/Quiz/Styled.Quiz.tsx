@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledQuiz = styled.div`
   background: linear-gradient(180deg, #32167c 0%, #1f1147 54.69%);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

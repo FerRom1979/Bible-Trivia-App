@@ -12,7 +12,7 @@ export interface IStepProps {
   title: string;
   value: string;
 }
-const items = ["difficulty", "category"];
+const items = ["difficulty", "type"];
 
 const ConfigQuestions = () => {
   const [counterSteps, setCounterSteps] = useState<number>(0);
@@ -21,15 +21,17 @@ const ConfigQuestions = () => {
 
   const STEPS = {
     difficulty: difficulty,
-    category: category,
+    type: category,
   };
 
   const handleConfigQuestions = (value: string) => {
+    console.log(`${[items[counterSteps]]}: ${value} `);
+
     if (counterSteps + 1 === items.length) {
-      dispatch(addConfigQuestions({ [items[counterSteps]]: value }));
+      dispatch(addConfigQuestions(`${[items[counterSteps]]}=${value} `));
       navigate("/quiz");
     } else {
-      dispatch(addConfigQuestions({ [items[counterSteps]]: value }));
+      dispatch(addConfigQuestions(`${[items[counterSteps]]}=${value} `));
       setCounterSteps((prev) => {
         return prev + 1;
       });
@@ -40,7 +42,7 @@ const ConfigQuestions = () => {
     <StyledConfigQuestions>
       <div className="title">{items[counterSteps]}</div>
       <div className="wrapper-cards">
-        {STEPS &&
+        {STEPS ? (
           (STEPS[items[counterSteps] as keyof {}] as []).map((item: IStepProps) => (
             <div key={item.id}>
               <div className="card-content">
@@ -56,7 +58,10 @@ const ConfigQuestions = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div>not data</div>
+        )}
       </div>
     </StyledConfigQuestions>
   );

@@ -11,7 +11,23 @@ export const questions = {
         Authorization: `Bearer ${getItem("token")}` || "",
       },
     });
-
     return await response.json();
+  },
+  FilterQuestions: async function (page: number = 1, size: number = 10, filtering: any) {
+    try {
+      const response = await window.fetch(
+        `${BASE_URL}/questions/search?${filtering}&page=${page}&size=${size}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${getItem("token")}` || "",
+          },
+        },
+      );
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+    }
   },
 };

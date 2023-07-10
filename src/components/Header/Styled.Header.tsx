@@ -2,21 +2,24 @@ import styled from "styled-components";
 
 const StyledHeader = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background: #fbf9f9;
   backdrop-filter: blur(60px);
+  .wrapper-title {
+    display: flex;
+  }
   .title {
     font-family: "Poppins";
     font-weight: 800;
     font-size: 30px;
     line-height: 45px;
     color: #696f79;
-    margin-left: 59px;
   }
   .btn-start {
     width: 212px;
-    height: 64px;
+    height: 44px;
     background: #8692a6;
     border: none;
     border-radius: 30px;
@@ -28,13 +31,17 @@ const StyledHeader = styled.div`
   }
   .user-avatar {
     display: flex;
-    margin-right: 59px;
+    justify-content: space-around;
+    width: 100%;
     h3 {
       margin-left: 15px;
       font-weight: 400;
-      font-size: 19px;
+      font-size: 24px;
       line-height: 28px;
       color: #696f79;
+    }
+    .avatar {
+      width: 50px;
     }
   }
 `;

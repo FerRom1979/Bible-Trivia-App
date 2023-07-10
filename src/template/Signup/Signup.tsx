@@ -30,6 +30,7 @@ const Signup = ({ setShowLogin }: ISignup) => {
       if (response.error) throw new Error(response.error);
 
       const res = await response.json();
+      console.log(res);
 
       if (res.status === 200) setShowLogin(false);
       resetForm();

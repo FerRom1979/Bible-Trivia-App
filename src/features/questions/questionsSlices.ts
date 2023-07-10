@@ -25,24 +25,31 @@ export const questionsSlice = createSlice({
   initialState,
   reducers: {
     getQuestions: (state, action) => {
-      const { questions } = action.payload;
-      questions.map((question: any) => {
-        question["answers"] = [
-          question.responseOne,
-          question.responseTwo,
-          question.responseTree,
-          question.responseCorrect,
-        ].sort(function () {
-          return Math.random() - 0.5;
+      try {
+        const { questions, filters } = action.payload;
+        const data = questions ? questions : filters;
+        console.log(filters);
+
+        data.map((question: any) => {
+          question["answers"] = [
+            question.responseOne,
+            question.responseTwo,
+            question.responseTree,
+            question.responseCorrect,
+          ].sort(function () {
+            return Math.random() - 0.5;
+          });
         });
-      });
-      state.questions = questions;
+        state.questions = data;
+      } catch (error) {
+        console.error(error);
+      }
     },
     counterAnswersCorrect: (state, action) => {
       state.total = [...state.total, action.payload];
     },
     addConfigQuestions: (state, action) => {
-      state.configQuestions = [{ ...state.configQuestions[0], ...action.payload }];
+      state.configQuestions = [...state.configQuestions, action.payload];
     },
   },
 });

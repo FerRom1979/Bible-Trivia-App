@@ -6,21 +6,28 @@ import logo from "../../assets/images/logo.png";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { questions } from "../../api/getQuestions";
+import { useAppSelector } from "../../app/hook";
 
 const Quiz = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const getAllQuestions = async () => {
-    try {
-      const response = await questions.GetQuestions();
+  const filtering = useAppSelector((state) => state.questions.configQuestions);
+  const filter = JSON.stringify(filtering)
+    .replace(/[[\]"]/g, "")
+    .replace(",", "&");
 
+  const filteringQuestions = async () => {
+    console.log(filter);
+
+    try {
+      const response = await questions.FilterQuestions(1, 10, filter);
       dispatch(getQuestions(response));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
-    getAllQuestions();
+    filteringQuestions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

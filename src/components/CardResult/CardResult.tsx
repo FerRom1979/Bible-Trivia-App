@@ -37,7 +37,9 @@ const CardResult = () => {
           ))}
         </ol>
       </div>
-      <div className="score">You Scored {total.length}/10</div>
+      <div className="score">
+        You Scored {total.length}/{questions.length}
+      </div>
       <div>
         <Button className="btn-result" type="button" text="Play Again" />
       </div>

@@ -8,10 +8,21 @@ import { useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   const { user } = useSelector((state: any) => state.auth);
-
+  function capitalize(word: string) {
+    return word[0].toUpperCase() + word.slice(1);
+  }
   return (
     <StyledHeader>
       <h2 className="title">QUIZ BIBLE</h2>
+      <div className="user-avatar">
+        <h3>Hi, {user.name ? capitalize(user.name) : "user"}</h3>
+        {user.file ? (
+          <img src={`${user.file}`} alt="user avatar" />
+        ) : (
+          <Ellipse className="avatar" />
+        )}
+      </div>
+
       <div>
         <Button
           type="button"
@@ -19,10 +30,6 @@ function Header() {
           className="btn-start"
           onClick={() => navigate("/config-questions")}
         />
-      </div>
-      <div className="user-avatar">
-        {user.file ? <img src={`${user.file}`} alt="user avatar" /> : <Ellipse />}
-        <h3>{user.name}</h3>
       </div>
     </StyledHeader>
   );

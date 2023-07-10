@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import Navbar from "../../components/Navbar/Navbar";
-import Dashboard from "../Dashboard";
+// import Navbar from "../../components/Navbar/Navbar";
+// import Dashboard from "../Dashboard";
 import StyledHome from "./Styled.Home";
 
 const Home = () => {
@@ -9,12 +9,12 @@ const Home = () => {
     <StyledHome>
       <Header />
       <div className="main-home">
-        <div className="navbar">
+        {/*  <div className="navbar">
           <Navbar />
-        </div>
-        <div>
+        </div> */}
+        {/*  <div>
           <Dashboard />
-        </div>
+        </div> */}
       </div>
     </StyledHome>
   );

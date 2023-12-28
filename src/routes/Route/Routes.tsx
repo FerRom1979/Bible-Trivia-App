@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../../template/Home";
 import PrivateRouter from "../PrivateRouter/PrivateRouter.routes";
 import Register from "../../template/Register/Register";
-//import Dashboard from "../../template/Dashboard";
+import Dashboard from "../../template/Dashboard";
 import Quiz from "../../template/Quiz/quiz";
 import CardQuestions from "../../components/CardQuestions";
 import CardResult from "../../components/CardResult";
@@ -59,6 +59,14 @@ const Router = () => {
           element={
             <PrivateRouter>
               <DashboardAdmin />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRouter>
+              <Dashboard />
             </PrivateRouter>
           }
         />

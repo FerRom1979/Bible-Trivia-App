@@ -34,13 +34,15 @@ const CardQuestions = () => {
   return (
     <StyledCardQuestions>
       <div className="header">
-        <div className="counter">
-          Questions {counter} of {questions?.length}
+        <div className="wrapper-card">
+          <div className="counter">
+            Questions {counter} of {questions?.length}
+          </div>
+          <div className="time">
+            TIME: <Countdown getTime={getTime} stop={stop} startTime={2} />
+          </div>
         </div>
         <div className="category">{questions[counter - 1]?.type || " "} </div>
-        <div className="time">
-          TIME: <Countdown getTime={getTime} stop={stop} startTime={2} />
-        </div>
       </div>
       <div>
         <p className="questions">{questions[counter - 1]?.question}</p>

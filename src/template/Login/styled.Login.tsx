@@ -9,16 +9,17 @@ export const StyledLoginComponent = styled.div`
   border-radius: 10px;
   && {
     form {
-      width: 90%;
+      width: 100%;
+      padding: 20px 40px;
     }
     h2 {
-      text-align: center;
+      text-align: start;
       font-family: "Inter";
       font-style: normal;
-      font-weight: 700;
-      font-size: 44px;
-      line-height: 53px;
-      color: #000;
+      font-weight: 600;
+      font-size: 22px;
+      margin: 20px 0;
+      color: rgba(0, 0, 0, 0.8);
     }
     .link {
       margin: 0 0 20px 0;
@@ -35,11 +36,13 @@ export const StyledLoginComponent = styled.div`
         right: 88px;
       }
     }
+
+    .grecaptcha-badge {
+      bottom: 60px !important;
+    }
+
     @media (min-width: ${breakpoints.md}px) {
       width: 400px;
-      form {
-        width: 80%;
-      }
     }
   }
 `;

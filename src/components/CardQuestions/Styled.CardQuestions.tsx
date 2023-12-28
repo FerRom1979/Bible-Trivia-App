@@ -11,16 +11,23 @@ export const StyledCardQuestions = styled.div<StyledCardQuestionsProps>`
   .header {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: baseline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #ffffff;
     font-size: 24px;
-    margin: 100px 80px;
+    margin: 40px 0px;
     .category {
       font-size: 36px;
       line-height: 43px;
       text-transform: capitalize;
+      margin-top: 30px;
+    }
+    .wrapper-card {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-evenly;
     }
   }
   .time {
@@ -30,11 +37,11 @@ export const StyledCardQuestions = styled.div<StyledCardQuestionsProps>`
     margin-left: 10px;
   }
   .questions {
-    width: 767px;
     font-size: 40px;
     line-height: 48px;
     text-align: center;
     color: #38e9bb;
+    margin-bottom: 40px;
   }
 
   .answers {
@@ -56,6 +63,8 @@ export const StyledCardQuestions = styled.div<StyledCardQuestionsProps>`
     text-align: center;
     color: #ffffff;
     border: none;
+    margin-bottom: 20px;
+    height: 60px;
   }
   .btn-error {
     background: red;

@@ -40,6 +40,7 @@ const ConfigQuestions = () => {
 
   return (
     <StyledConfigQuestions>
+      <h1>Configurar las preguntas</h1>
       <div className="title">{items[counterSteps]}</div>
       <div className="wrapper-cards">
         {STEPS ? (
@@ -51,7 +52,7 @@ const ConfigQuestions = () => {
                 <div>
                   <Button
                     type="button"
-                    text="Selected"
+                    text="Seleccionado"
                     className="btn"
                     onClick={() => handleConfigQuestions(item.value)}
                   />

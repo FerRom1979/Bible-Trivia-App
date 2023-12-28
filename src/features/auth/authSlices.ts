@@ -14,7 +14,7 @@ export interface IAuthUser {
 }
 
 const initialState: any = {
-  user: "",
+  user: null,
 };
 
 export const authSlice = createSlice({

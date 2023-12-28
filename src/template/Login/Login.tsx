@@ -14,8 +14,8 @@ import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import LinkComponent from "../../components/LinkComponent";
 import DividingComponent from "../../components/DividingCompopnent";
-import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
-import { ReactComponent as Google } from "../../assets/svg/google.svg";
+// import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
+// import { ReactComponent as Google } from "../../assets/svg/google.svg";
 import { auth } from "../../api/auth";
 import { setItems } from "../../utils/localStorage";
 
@@ -77,9 +77,8 @@ const Login = ({ setShowLogin }: ILogin) => {
               />
             )}
             <Form>
-              <h2>
-                Login <br /> Welcome back!
-              </h2>
+              <h2>Log in</h2>
+              <DividingComponent />
               <Input
                 type="email"
                 flexDirection="column"
@@ -89,6 +88,7 @@ const Login = ({ setShowLogin }: ILogin) => {
                 placeholder="email"
                 isError={!!formik.errors.email}
               />
+
               <Input
                 type="password"
                 flexDirection="column"
@@ -100,7 +100,7 @@ const Login = ({ setShowLogin }: ILogin) => {
               />
               <LinkComponent
                 routed="####"
-                text="Forgot Password?"
+                text="¿Olvidaste tu contraseña?"
                 color="#2F89FC"
                 className="link"
               />
@@ -113,12 +113,12 @@ const Login = ({ setShowLogin }: ILogin) => {
                 }
               />
               <Button
-                text="Don’t have an account? Signup"
+                text="¿No tiene una cuenta? Regístrese"
                 type="button"
                 className="text"
                 onClick={() => setShowLogin(true)}
               />
-              <DividingComponent label="Or" />
+              {/* <DividingComponent label="Or" />
               <Button text="Login with Facebook" type="button" className="button-login" disabled>
                 <Facebook className="icon-facebook" />
               </Button>
@@ -130,7 +130,7 @@ const Login = ({ setShowLogin }: ILogin) => {
                 disabled
               >
                 <Google className="icon-facebook" />
-              </Button>
+              </Button> */}
             </Form>
             <div className="reCaptcha">
               <ReCAPTCHA

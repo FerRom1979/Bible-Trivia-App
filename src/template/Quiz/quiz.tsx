@@ -38,16 +38,16 @@ const Quiz = () => {
       </div>
       <div>
         <h2 className="title">
-          This is <br /> Trivia Challenge
+          Se trata de un reto sobre <br /> cuánto sabes de la Biblia.
         </h2>
       </div>
       <div>
-        <p className="description"> You will receive 10 questions can you answer all right?</p>
+        <p className="description"> Recibirás 10 preguntas ¿puedes responderlas todas bien?</p>
       </div>
       <div>
         <Button
           type="button"
-          text="start"
+          text="comenzar"
           className="btn-start"
           onClick={() => navigate("/card-questions")}
         />

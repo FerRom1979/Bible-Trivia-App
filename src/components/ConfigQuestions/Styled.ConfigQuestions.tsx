@@ -1,12 +1,19 @@
 import styled from "styled-components";
+import { colors } from "../../constant/colors";
 
 export const StyledConfigQuestions = styled.div`
-  background: linear-gradient(180deg, #32167c 0%, #1f1147 54.69%);
+  background: ${colors.linearGradientBackground};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  width: 100%;
+  h1 {
+    font-size: 22px;
+    color: ${colors.white};
+    padding: 20px 10px;
+    text-transform: capitalize;
+  }
   .wrapper-cards {
     display: flex;
     flex-direction: column;
@@ -15,21 +22,20 @@ export const StyledConfigQuestions = styled.div`
     align-items: center;
   }
   .title {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-family: "Russo One";
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 24px;
     line-height: 48px;
     text-align: center;
     color: #38e9bb;
-    height: 40px;
   }
   .card-title {
     background: #6949fd;
+    margin-top: 10px;
   }
   .description {
-    margin: 20px 0;
     font-family: "Russo One";
     font-style: normal;
     font-weight: 400;
@@ -44,6 +50,7 @@ export const StyledConfigQuestions = styled.div`
     background: #1f1147;
     max-width: 350px;
     margin-bottom: 20px;
+    border: 1px solid ${colors.white};
     :hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     }

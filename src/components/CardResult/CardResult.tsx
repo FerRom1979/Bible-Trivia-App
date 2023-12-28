@@ -23,7 +23,7 @@ const CardResult = () => {
       <div>
         <h2 className="title">Result:</h2>
       </div>
-      <div>
+      <div className="wrapper-results">
         <ol>
           {questions.map((question: any) => (
             <li key={question._id}>
@@ -48,7 +48,10 @@ const CardResult = () => {
           className="btn-result"
           type="button"
           text="End Game"
-          onClick={() => dispatch(addDataPlayer(resultQuestions))}
+          onClick={() => {
+            console.log(resultQuestions);
+            return dispatch(addDataPlayer(resultQuestions));
+          }}
         />
       </div>
     </StyledCardResult>

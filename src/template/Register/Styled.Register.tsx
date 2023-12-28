@@ -5,5 +5,5 @@ export const StyledRegister = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #1e1e1e;
-  min-height: 100vh;
+  width: 100%;
 `;

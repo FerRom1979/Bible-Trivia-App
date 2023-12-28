@@ -6,7 +6,7 @@ const DividingComponent = ({ label }: DividingComponentProps) => {
   return (
     <StyledDividingComponent>
       <div className="line" />
-      <span>{label}</span>
+      {label && <span>{label}</span>}
       <div className="line" />
     </StyledDividingComponent>
   );

@@ -9,9 +9,9 @@ import { ISignup, IValues } from "./interfaces";
 import { isEmpty } from "../../utils/isEmpty";
 import Toast from "../../components/Toast";
 import ReCaptCha from "../../components/Recaptcha/Recaptcha";
-import DividingComponent from "../../components/DividingCompopnent";
-import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
-import { ReactComponent as Google } from "../../assets/svg/google.svg";
+// import DividingComponent from "../../components/DividingCompopnent";
+// import { ReactComponent as Facebook } from "../../assets/svg/facebook-1.svg";
+// import { ReactComponent as Google } from "../../assets/svg/google.svg";
 import { auth } from "../../api/auth";
 
 const Signup = ({ setShowLogin }: ISignup) => {
@@ -112,7 +112,7 @@ const Signup = ({ setShowLogin }: ISignup) => {
                 className="text"
                 onClick={() => setShowLogin(false)}
               />
-              <DividingComponent label="Or" />
+              {/*               <DividingComponent label="Or" />
               <Button text="Login with Facebook" type="submit" className="button-login">
                 <Facebook className="icon-facebook" />
               </Button>
@@ -123,7 +123,7 @@ const Signup = ({ setShowLogin }: ISignup) => {
                 bg="#fff"
               >
                 <Google className="icon-facebook" />
-              </Button>
+              </Button> */}
             </Form>
           </StyledRegister>
         );
